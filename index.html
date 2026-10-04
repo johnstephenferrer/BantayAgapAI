@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Bantay AgapAI</title>
+  <meta name="description" content="Bantay AgapAI — Barangay 135 digital governance portal.">
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* Keep service images small and contained inside their icons */
+    #serviceGrid .service-card .service-icon {
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
+      min-height: 42px !important;
+      max-width: 42px !important;
+      max-height: 42px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      position: relative !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
+    }
+
+    #serviceGrid .service-card .service-icon img {
+      display: block !important;
+      position: static !important;
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-width: 34px !important;
+      max-height: 34px !important;
+      object-fit: contain !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      transform: none !important;
+    }
+
+    /* Compact hero stats card and its image icons */
+    #heroStats {
+      width: 230px;
+      padding: 10px 13px 8px;
+    }
+
+    #heroStats .stats-card-heading {
+      margin-bottom: 2px;
+    }
+
+    #heroStats .stats-card-heading > p,
+    #heroStats .stats-disclaimer {
+      display: none;
+    }
+
+    #heroStats .hero-stat {
+      gap: 9px;
+      padding: 4px 0;
+    }
+
+    #heroStats .stat-icon {
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      flex: 0 0 30px;
+    }
+
+    #heroStats .hero-stat b {
+      font-size: 15px;
+    }
+
+    #heroStats .hero-stat small {
+      margin-top: 2px;
+      font-size: 9px;
+    }
+
+    #heroStats .stat-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero" id="home">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="#home">
+          <div class="brand-mark">
+            <img src="/bantay-logo.png" alt="Bantay AgapAI logo">
+          </div>
+
+          <div>
+            <b>BANTAY AGAPAI</b>
+            <small>A BARANGAY DIGITAL GOVERNANCE PLATFORM</small>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a class="active" href="#home">HOME</a>
+          <a href="#services">SERVICES</a>
+          <a href="#projects">PROJECTS</a>
+          <a href="#about">ABOUT US</a>
+          <a href="#complaints">CONTACT US</a>
+        </div>
+
+        <div class="nav-actions">
+          <div class="location-pill" id="locationBtn" aria-label="Current barangay: Barangay 135">
+            <span class="location-pin" aria-hidden="true">📍</span>
+            <span class="location-copy">
+              <b>Barangay 135</b>
+              <small>Balut, Tondo, Manila</small>
+            </span>
+          </div>
+
+          <button class="pink-btn" id="loginBtn" type="button">
+            RESIDENT LOGIN →
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <div class="eyebrow">Bantay. Gabay. Serbisyong Maaasahan.</div>
+
+        <h1>
+          Empowering Barangays<br>
+          Through <span>Digital Governance</span>
+        </h1>
+
+        <p>
+          A digital hub for a more transparent, responsive, and people-centered
+          barangay community in Barangay 135, Balut, Tondo, Manila.
+        </p>
+
+        <div class="hero-actions">
+          <button
+            class="pink-btn"
+            onclick="document.querySelector('#services').scrollIntoView({behavior:'smooth'})"
+          >
+            Explore Services →
+          </button>
+
+          <button
+            class="outline-btn"
+            onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})"
+          >
+            View Barangay Projects
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div class="stats-card-heading">
+          <div class="stats-heading-row">
+            <span class="stats-title">Barangay Snapshot</span>
+            <span class="stats-demo-tag">DEMO ESTIMATES</span>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="stat-icon" aria-hidden="true">
+            <img src="/resident.png" alt="">
+          </span>
+          <div>
+            <b>15,230</b>
+            <small>Estimated Residents</small>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="stat-icon" aria-hidden="true">
+            <img src="/services.png" alt="">
+          </span>
+          <div>
+            <b>25+</b>
+            <small>Barangay Services</small>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="stat-icon" aria-hidden="true">
+            <img src="/projects.png" alt="">
+          </span>
+          <div>
+            <b>8</b>
+            <small>Ongoing Projects</small>
+          </div>
+        </div>
+
+        <div class="hero-stat">
+          <span class="stat-icon" aria-hidden="true">
+            <img src="/satisfaction.png" alt="">
+          </span>
+          <div>
+            <b>95%</b>
+            <small>Demo Satisfaction Estimate</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- BARANGAY SERVICES -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <label>QUICK ACCESS</label>
+            <h2>Barangay Services</h2>
+            <p>
+              Find the right office, requirements, and procedures for your concern.
+            </p>
+          </div>
+
+          <a href="#guide">Ask the AI Guide →</a>
+        </div>
+
+        <div id="serviceGrid" class="service-grid"></div>
+      </div>
+    </section>
+
+    <!-- BARANGAY PROJECTS -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <label>BARANGAY PROJECTS</label>
+            <h2>Ongoing Projects</h2>
+            <p>
+              Track project progress and updates for a more transparent community.
+            </p>
+          </div>
+
+          <button class="link-btn" id="refreshProjects">
+            Refresh ↻
+          </button>
+        </div>
+
+        <div class="project-showcase">
+          <div id="projectGrid" class="project-grid"></div>
+
+          <button class="link-btn hidden" id="viewAllProjects" type="button">
+            View All Projects →
+          </button>
+
+          <div class="project-promo">
+            <div>
+              <strong>Together for a Better, Brighter Barangay 135</strong>
+              <span>
+                Transparent projects. Accessible services. A stronger community.
+              </span>
+
+              <button
+                class="pink-btn"
+                onclick="document.querySelector('#guide').scrollIntoView({behavior:'smooth'})"
+              >
+                Learn More About Bantay AgapAI →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI BARANGAY GUIDE -->
+    <section id="guide" class="section guide-section">
+      <div class="container">
+        <div class="guide-shell">
+          <div class="guide-main">
+            <div class="guide-heading">
+              <div class="bot">
+                <img
+                  src="/guide-robot.png"
+                  alt="AI Barangay Guide assistant"
+                >
+              </div>
+
+              <div>
+                <h2>AI Barangay Guide</h2>
+                <p>
+                  Ask about barangay services, offices, requirements, and procedures.
+                </p>
+              </div>
+
+              <span class="ai-status" id="aiStatus">
+                Checking AI…
+              </span>
+            </div>
+
+            <form id="guideForm" class="guide-form">
+              <input
+                id="question"
+                placeholder='Try: "Nawawala yung ID ko, saan ako pupunta?"'
+                required
+              >
+              <button>→</button>
+            </form>
+
+            <div class="chips">
+              <button data-q="Kumuha ng Barangay Clearance">
+                Barangay Clearance
+              </button>
+
+              <button data-q="Mag-report ng reklamo">
+                Mag-report ng reklamo
+              </button>
+
+              <button data-q="Emergency contact number">
+                Emergency
+              </button>
+
+              <button data-q="Nawawala yung ID ko, saan ako pupunta?">
+                Nawalang ID
+              </button>
+
+              <button data-q="Saan ako makakakuha ng assistance?">
+                Assistance
+              </button>
+            </div>
+
+            <div id="guideResult" class="guide-result hidden"></div>
+          </div>
+
+          <aside class="guide-sidebar">
+            <h3>Common Concerns</h3>
+
+            <button data-q="Kumuha ng Barangay Clearance">
+              📄 Documents <span>›</span>
+            </button>
+
+            <button data-q="Mag-report ng reklamo">
+              💬 Complaints <span>›</span>
+            </button>
+
+            <button data-q="Saan ako makakakuha ng assistance?">
+              🤝 Assistance Programs <span>›</span>
+            </button>
+
+            <button data-q="Emergency contact number">
+              🚨 Emergency <span>›</span>
+            </button>
+
+            <button data-q="Business permit">
+              🏢 Business Permits <span>›</span>
+            </button>
+
+            <button data-q="Health service">
+              ♥ Health Services <span>›</span>
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT A CONCERN -->
+    <section id="complaints" class="section form-section">
+      <div class="container narrow">
+        <div class="section-head">
+          <div>
+            <label>RESIDENT SUPPORT</label>
+            <h2>Report a Concern</h2>
+            <p>
+              Submit a community concern and receive a reference number for tracking.
+            </p>
+          </div>
+        </div>
+
+        <form id="complaintForm" class="form-card">
+          <div class="form-grid">
+            <label>
+              Name
+              <input name="name" required>
+            </label>
+
+            <label>
+              Contact (optional)
+              <input name="contact">
+            </label>
+
+            <label>
+              Category
+              <select name="category">
+                <option>General Concern</option>
+                <option>Noise / Community</option>
+                <option>Environment</option>
+                <option>Safety</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Description
+            <textarea
+              name="description"
+              rows="5"
+              required
+              placeholder="Describe what happened and where."
+            ></textarea>
+          </label>
+
+          <button class="pink-btn">Submit Concern</button>
+          <div id="complaintMessage" class="message"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- TRACK A REQUEST -->
+    <section id="track" class="section track-section">
+      <div class="container narrow">
+        <div class="section-head">
+          <div>
+            <label>TRACKING</label>
+            <h2>Track a Request</h2>
+            <p>
+              Enter the reference number you received after submitting a request or complaint.
+            </p>
+          </div>
+        </div>
+
+        <form id="trackForm" class="track-form">
+          <input
+            id="trackId"
+            placeholder="Example: REQ_xxx or CMP_xxx"
+            required
+          >
+          <button class="blue-btn">Track</button>
+        </form>
+
+        <div id="trackResult"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <label>ABOUT BANTAY AGAPAI</label>
+
+        <h2>One digital place for barangay information.</h2>
+
+        <p>
+          Bantay AgapAI is designed to help residents find the correct service,
+          understand where to go, submit concerns, track references, and monitor
+          barangay projects.
+        </p>
+
+        <div class="about-actions">
+          <button class="outline-dark" id="adminBtn">
+            Open Admin Dashboard
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD -->
+    <section id="admin" class="section admin-section hidden">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <label>DEMO ADMIN</label>
+            <h2>Barangay Dashboard</h2>
+            <p>
+              Manage project progress and review submitted concerns/requests.
+            </p>
+          </div>
+
+          <button class="link-btn" id="closeAdmin">Close</button>
+        </div>
+
+        <div id="adminSummary" class="admin-stats"></div>
+
+        <div class="admin-grid">
+          <div class="admin-card">
+            <h3>Projects</h3>
+            <div id="adminProjects"></div>
+
+            <form id="projectForm" class="mini-form">
+              <input name="name" placeholder="Project name" required>
+              <input name="location" placeholder="Location" required>
+
+              <select name="status">
+                <option>Planning</option>
+                <option>Ongoing</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+                <option>Delayed</option>
+              </select>
+
+              <input
+                name="progress"
+                type="number"
+                min="0"
+                max="100"
+                placeholder="Progress %"
+              >
+
+              <input name="start" placeholder="Start date">
+              <input name="target" placeholder="Target completion">
+
+              <button class="blue-btn">Add Project</button>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <h3>Complaints</h3>
+            <div id="adminComplaints"></div>
+          </div>
+
+          <div class="admin-card">
+            <h3>Service Requests</h3>
+            <div id="adminRequests"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="footer-logo" href="#home" aria-label="Bantay AgapAI home">
+            <span class="footer-logo-mark">
+              <img src="/bantay-logo.png" alt="">
+            </span>
+            <span class="footer-wordmark">BANTAY <strong>AGAPAI</strong></span>
+          </a>
+
+          <p>
+            Transparent projects. Accessible services. A stronger community.
+          </p>
+
+          <div class="footer-location">
+            <span aria-hidden="true">📍</span>
+            <span>Barangay 135 · Balut, Tondo, Manila</span>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Explore the website">
+          <h2>Explore</h2>
+          <a href="#services">Barangay Services</a>
+          <a href="#projects">Community Projects</a>
+          <a href="#about">About Bantay AgapAI</a>
+        </nav>
+
+        <nav class="footer-links" aria-label="Resident tools">
+          <h2>Resident Tools</h2>
+          <a href="#guide">Barangay Guide</a>
+          <a href="#complaints">Submit a Complaint</a>
+          <a href="#track">Track a Request</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Bantay AgapAI. All rights reserved.</span>
+        <a class="footer-back-top" href="#home">
+          Back to top <span aria-hidden="true">↑</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- EXISTING APPLICATION SCRIPT -->
+  <script src="/app.js"></script>
+
+  <!-- SERVICE IMAGE REPLACEMENT -->
+  <script>
+    const serviceImages = [
+      {
+        file: "/clearance.png",
+        alt: "Barangay Clearance"
+      },
+      {
+        file: "/concern.png",
+        alt: "Barangay Concern"
+      },
+      {
+        file: "/assistance.png",
+        alt: "Assistance Program"
+      },
+      {
+        file: "/emergency.png",
+        alt: "Emergency Assistance"
+      },
+      {
+        file: "/business.png",
+        alt: "Business Permits"
+      },
+      {
+        file: "/health.png",
+        alt: "Health Services"
+      }
+    ];
+
+    function replaceServiceIcons() {
+      const icons = document.querySelectorAll(
+        "#serviceGrid .service-card .service-icon"
+      );
+
+      icons.forEach((icon, index) => {
+        const item = serviceImages[index];
+
+        if (!item) return;
+
+        // Avoid replacing the same image repeatedly.
+        if (icon.dataset.imageApplied === "true") return;
+
+        const image = document.createElement("img");
+        image.src = item.file;
+        image.alt = item.alt;
+        image.width = 34;
+        image.height = 34;
+        image.style.width = "34px";
+        image.style.height = "34px";
+        image.style.maxWidth = "34px";
+        image.style.maxHeight = "34px";
+        image.style.objectFit = "contain";
+
+        icon.replaceChildren(image);
+        icon.dataset.imageApplied = "true";
+      });
+    }
+
+    // Apply after the page loads.
+    document.addEventListener("DOMContentLoaded", replaceServiceIcons);
+
+    // Watch for service cards created dynamically by app.js.
+    const serviceGrid = document.getElementById("serviceGrid");
+
+    if (serviceGrid) {
+      const serviceObserver = new MutationObserver(() => {
+        replaceServiceIcons();
+      });
+
+      serviceObserver.observe(serviceGrid, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    // Run once immediately in case app.js already rendered the cards.
+    replaceServiceIcons();
+  </script>
+</body>
+</html>
